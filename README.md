@@ -1,51 +1,36 @@
-ArrayForLua
+A branch of [**Array.lua**](https://github.com/blujagu/ArrayForLua/blob/master/Array.lua)
 ===================
 
 Array.lua contains a collection of Array methods for working with tables and arrays in Lua.
 
-&nbsp;
-
-> Roblox Developers:
-> - Click on :page_facing_up: [**Array.lua**](https://github.com/blujagu/ArrayForLua/blob/master/Array.lua)
-> - Click the <kbd>Raw</kbd> button
-> - Press <kbd>Ctrl+A</kbd> to Select All then <kbd>Ctrl+C</kbd> to Copy the code
-> - Open Roblox Studio
-> - Insert a ModuleScript into ReplicatedStorage
-> - Rename the ModuleScript to **Array** and open the file
-> - Delete the starter code in the file, then press <kbd>Ctrl+V</kbd> to paste in the Array code
-> - To include the Array module in other scripts:
-```lua
-local ReplicatedStorage = game:GetService('ReplicatedStorage')
-local Array = require(ReplicatedStorage:WaitForChild('Array'))
-```
-> - Non-copylocked "Game" with full test coverage and implementation examples [here][2]
-
-&nbsp;
+**Improvement points：**
+- This library has been rewritten in the standard module format.Can be called in the style of module.method(target,(optional parameters)).
+- Separate descriptions are provided for the parameters used by each method.
 
 # How to Use
 
-- There are two easy ways to use ArrayForLua methods:
+1. Import the module.Call Array methods directly, then passing them a table as the first argument
+  
+    ```lua
+    local ArrayUtil = require("array_util")
+    -- or local Array = require("array_util"), array_util is the name of the file
+    local t = {4, 1, 3, 2}
+    
+    ArrayUtil.Sort(t)  -- {1, 2, 3, 4}
+    ```
 
-  1. Wrap the table to give it Array methods (internally, via setmetatable).
+
+2. Wrap the table to give it Array methods (internally, via setmetatable) 
   
   ```lua
   local t = {4, 1, 3, 2}
-  
-  Array(t)
-  
+  setmetatable(t1,{__index =ArrayUtil})  
   t:Sort()  -- {1, 2, 3, 4}
   ```
-  
-  2. Call Array methods directly, passing them a table as the first argument
-  
-    ```lua
-    local t = {4, 1, 3, 2}
-    
-    Array.Sort(t)  -- {1, 2, 3, 4}
-    ```
-    
-The API documentation below uses the first method to illustrate implementation as the syntax looks more like native Lua.
 
+I acknowledge that using module.method(target, (optional parameters)) requires more characters. However, today the editor's auto-completion responds quickly. Also, when importing a module, require acts like a namespace, allowing you to use an alias. If you prefer a style closer to native Lua, you need to set a metatable for inheritance.Just like the above.
+
+The API documentation below uses the second method to illustrate implementation as the syntax looks more like native Lua. **This is written by the original author. Still valid.**
 
 # ArrayForLua API
 
