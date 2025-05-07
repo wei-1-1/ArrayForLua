@@ -9,7 +9,7 @@ Array.lua contains a collection of Array methods for working with tables and arr
 
 # How to Use
 
-1. Import the module.Call Array methods directly, then passing them a table as the first argument
+1. Import the module.Call Array methods directly, then passing them a table as the first argument.
   
     ```lua
     local ArrayUtil = require("array_util")
@@ -20,7 +20,7 @@ Array.lua contains a collection of Array methods for working with tables and arr
     ```
 
 
-2. Wrap the table to give it Array methods (internally, via setmetatable) 
+2. Wrap the table to give it Array methods (via setmetatable) .
   
   ```lua
   local t = {4, 1, 3, 2}
